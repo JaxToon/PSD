@@ -12,6 +12,7 @@ import openai
 from openai import OpenAI
 import os
 from dotenv import load_dotenv
+import streamlit as st  # Pastikan mengimpor streamlit
 # Function to clean text for analysis
 
 import re
@@ -51,9 +52,13 @@ def generate_wordcloud(text,title= None):
 
 
 # Load environment variables
-
-load_dotenv()
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+api_key = st.session_state.get("api_key")
+    
+if not api_key:
+    raise ValueError("API Key tidak ditemukan!")
+# load_dotenv()
+# client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = OpenAI(api_key=api_key)
 # Download necessary NLTK resources
 nltk.download('punkt', quiet=True)
 nltk.download('stopwords', quiet=True)
