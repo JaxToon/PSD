@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.env
+.venv/
+
+# Kaggle IMDB dataset (download it, see README)
+Dataset/IMDB Dataset.csv
+Dataset/*.zip
